@@ -1,10 +1,14 @@
-
+//Lista de productos con precios. 
 var productos = [
     { nombre: 'Café Americano', precio: 35.00 },
     { nombre: 'Capuccino', precio: 45.00 },
     { nombre: 'Muffin Chocolate', precio: 30.00 }
 ];
 
+//Variable para guardar el pedido
+var pedido = [];
+
+//Función para mostrar el menú  
 function mostrarMenu() {
     var menu = document.getElementById('menu');
     
@@ -13,16 +17,44 @@ function mostrarMenu() {
     for (var i = 0; i < productos.length; i++) {
         var producto = productos[i];
         
-        var tarjeta = 
-            '<div class="producto">' +
-                '<div class="nombre">' + producto.nombre + '</div>' +
-                '<div class="precio">$' + producto.precio.toFixed(2) + '</div>' +
-            '</div>';
+        var item = '<li onclick="agregarAlPedido(' + i + ')">' + 
+                   producto.nombre + ' - $' + producto.precio.toFixed(2) + 
+                   '</li>';
         
-        menu.innerHTML += tarjeta;
+        menu.innerHTML += item;
+
     }
 }
 
+//Función para agregar un producto al pedido 
+function agregarAlPedido(indice) {
+    var producto = productos[indice];
+    
+    pedido.push(producto);
+    
+    mostrarPedido();
+}
+
+//Función para mostrar el pedido 
+function mostrarPedido() {
+    var listaPedido = document.getElementById('pedido');
+    listaPedido.innerHTML = '';
+    
+    var total = 0;
+    
+    for (var i = 0; i < pedido.length; i++) {
+        var producto = pedido[i];
+        
+        var item = '<li>' + producto.nombre + ' - $' + producto.precio.toFixed(2) + '</li>';
+        listaPedido.innerHTML += item;
+        
+        total += producto.precio;
+    }
+    
+    document.getElementById('total').textContent = total.toFixed(2);
+}
+
+//Ejecutar cuando la página carga
 window.onload = function() {
     mostrarMenu();
 };
