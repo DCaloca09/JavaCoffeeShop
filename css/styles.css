@@ -8,18 +8,20 @@ body {
 .contenedor {
     display: flex;
     gap: 40px;
+    flex-wrap: wrap; 
 }
 
-
-.columna-menu {
-    flex: 1;
-}
-
-
+.columna-menu, 
 .columna-pedido {
     flex: 1;
-    border-left: 2px solid #ccc;
-    padding-left: 40px;
+    min-width: 300px; 
+}
+
+.seccion-pago {
+    flex-basis: 100%; 
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #ccc;
 }
 
 
@@ -57,6 +59,25 @@ h2 {
     font-family: Arial, sans-serif;
     font-size: 14px;
     margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+#pedido li button {
+    background-color: #ff4444;
+    color: white;
+    border: none;
+    padding: 3px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+}
+
+#pedido li button:hover {
+    background-color: #cc0000;
 }
 
 
@@ -66,4 +87,67 @@ h2 {
     border-top: 2px solid #333;
     font-family: Arial, sans-serif;
     font-size: 18px;
+}
+
+.seccion-pago {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #ccc;
+}
+
+.campo-pago {
+    margin: 15px 0;
+}
+
+.campo-pago label {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.campo-pago input {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.resultado-pago {
+    margin-top: 15px;
+}
+
+#mensaje-pago {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+#mensaje-pago.insuficiente {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+}
+
+#mensaje-pago.exacto {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+}
+
+#mensaje-pago.con-cambio {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border: 1px solid #90caf9;
+}
+
+#cambio {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
 }

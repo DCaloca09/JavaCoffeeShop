@@ -72,10 +72,60 @@ function mostrarPedido() {
     
     document.getElementById('total').textContent = total.toFixed(2);
 
+    // Recalcular el cambio cuando cambia el total
+    calcularCambio();
 }
+
+//Función para calcular el cambio
+function calcularCambio() {
+    var totalText = document.getElementById('total').textContent;
+    var total = parseFloat(totalText);
+    
+    var pagoCliente = document.getElementById('pago-cliente').value;
+    var pago = parseFloat(pagoCliente);
+    
+    var mensajePago = document.getElementById('mensaje-pago');
+    var cambioDiv = document.getElementById('cambio');
+    
+    
+    if (!pagoCliente || pagoCliente === '' || isNaN(pago)) {
+        mensajePago.textContent = '';
+        mensajePago.className = '';
+        cambioDiv.textContent = '';
+        return;
+    }
+    
+    // Calcular el cambio
+    var cambio = pago - total;
+    
+    // Si el pago es insuficiente
+    if (cambio < 0) {
+        mensajePago.textContent = 'Pago insuficiente';
+        mensajePago.className = 'insuficiente';
+        cambioDiv.textContent = 'Falta: $' + Math.abs(cambio).toFixed(2);
+    }
+    
+    // Si el pago es exacto
+    else if (cambio === 0) {
+        mensajePago.textContent = 'Pago exacto';
+        mensajePago.className = 'exacto';
+        cambioDiv.textContent = 'Cambio: $0.00';
+    }
+
+    // Si el pago es mayor (hay cambio)
+    else {
+        mensajePago.textContent = 'Pago recibido correctamente';
+        mensajePago.className = 'con-cambio';
+        cambioDiv.textContent = 'Cambio a devolver: $' + cambio.toFixed(2);
+    }
+}
+
 
 //Ejecutar cuando la página carga
 window.onload = function() {
     mostrarMenu();
     mostrarPedido();
+
+    var campoPago = document.getElementById('pago-cliente');
+    campoPago.addEventListener('input', calcularCambio);
 }
