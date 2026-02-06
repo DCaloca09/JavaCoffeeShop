@@ -2,7 +2,7 @@
 var productos = [
     { nombre: 'Café Americano', precio: 35.00 },
     { nombre: 'Capuccino', precio: 45.00 },
-    { nombre: 'Muffin Chocolate', precio: 30.00 }
+    { nombre: 'Muffin Chocolate', precio: 15.00 }
 ];
 
 //Variable para guardar el pedido
