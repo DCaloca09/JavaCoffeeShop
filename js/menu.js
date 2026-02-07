@@ -1,7 +1,7 @@
 //Lista de productos con precios. 
 var productos = [
-    { nombre: 'Café Americano', precio: 35.00 },
-    { nombre: 'Capuccino', precio: 45.00 },
+    { nombre: 'Café Americano', precio: 20.00 },
+    { nombre: 'Capuccino', precio: 35.00 },
     { nombre: 'Muffin Chocolate', precio: 15.00 }
 ];
 
